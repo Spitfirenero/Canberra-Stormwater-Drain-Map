@@ -1,0 +1,85 @@
+{
+  "structures": [
+    {
+      "id": "secret-squirrels",
+      "name": "Secret Squirrels",
+      "description": "This is a great begginer drain to start draining in. It has two dry entrances which is rare for storm water drains. It has two main features; being a multi-height vent room and a large chamber known as \"The TEMPLE of DOOM!\". \n The upstream entrance looks like it is inacessable, however, on either side someone has cut a small section of the bars which you can squeeze through. Be careful with this entrance as you do have to climb up/down a ladder about 1-1.5m tall to use it, additionaly you come out above Sulwood drive on a hill which can be hard to cimb up/down. There is an access road which leads up to this entrance near the Mt. Taylor carpark.",
+      "color": "#a855f7",
+      "members": [
+        "PIP146580",
+        "PIP146579",
+        "PIP018885",
+        "PIP018884",
+        "PIP018887",
+        "PIP018883",
+        "PIP018882",
+        "PIP018881",
+        "PIP019610",
+        "PIP018278",
+        "PIP146588",
+        "PIP018880",
+        "PIP146587",
+        "PIP146586",
+        "PIP018261",
+        "PIP146585"
+      ],
+      "annotations": [
+        { "lat": -35.394383, "lng": 149.0777, "label": "Secret Squirrels Downstream Entrance" },
+        { "lat": -35.391182, "lng": 149.082117, "label": "Secret Squirrels Vent" },
+        { "lat": -35.387741, "lng": 149.082347, "label": "Secret Squirrels TEMPLE of DOOM" },
+        { "lat": -35.383380, "lng": 149.082504,"label": "Secret Squirrels Upstream Entrance"}
+      ]
+    },
+    {
+        "id": "fireflys",
+        "name": "Fireflys",
+        "description": "blah blah blah",
+        "color": "#ffaf0f",
+        "members": [
+            "PIP031177",
+            "PIP031176",
+            "PIP031174",
+            "PIP031175",
+            "PIP031173",
+            "PIP110624",
+            "PIP110627",
+            "PIP110632",
+            "PIP070485",
+            "PIP070488",
+            "PIP070484",
+            "PIP070487",
+            "PIP070481",
+            "PIP070483",
+            "PIP070472",
+            "PIP070473",
+            "PIP070471",
+            "PIP070769",
+            "PIP070480",
+            "PIP070470",
+            "PIP070479",
+            "PIP070770",
+            "PIP070768",
+            "PIP070764",
+            "PIP070463",
+            "PIP070477",
+            "PIP070774",
+            "PIP070467",
+            "PIP070466",
+            "PIP070462",
+            "PIP070765",
+            "PIP070489",
+            "PIP070767",
+            "PIP070773",
+            "PIP070772"
+        ],
+        "annotations": [
+            { "lat": -35.435012, "lng": 149.116828, "label": "Fireflys Entrance" },
+            { "lat": -35.438697, "lng": 149.118464, "label": "Fireflys Vent" },
+            { "lat": -35.442219, "lng": 149.121890, "label": "Fireflys Manhole Vent 1" },
+            { "lat": -35.442542, "lng": 149.122054, "label": "Fireflys Manhole Vent 2" },
+            { "lat": -35.442893, "lng": 149.122130, "label": "Fireflys Manhole Vent 3" },
+            {"lat": -35.443261, "lng": 149.122136, "label": "Fireflys Manhole Vent 4"}
+        ]
+    }
+  ]
+}

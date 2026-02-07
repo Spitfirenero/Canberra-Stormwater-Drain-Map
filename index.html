@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Canberra Storm Water Drains</title>
+
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css?v=8" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="title">Canberra Storm Water Drains</div>
+      <div class="meta">
+        <span id="status">Loading GeoJSON…</span>
+        <button
+          id="btn-sidebar"
+          class="btn"
+          type="button"
+          title="Hide/show sidebar"
+          aria-pressed="false"
+        >
+          Hide sidebar
+        </button>
+        <button id="btn-fit" class="btn" type="button" title="Fit data to view">Fit</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section id="map" class="map" aria-label="Map"></section>
+      <div
+        id="sidebar-resizer"
+        class="sidebar-resizer"
+        role="separator"
+        aria-orientation="vertical"
+        aria-label="Resize sidebar"
+        title="Drag to resize sidebar"
+      ></div>
+      <aside class="sidebar" aria-label="Details">
+        <h2>Filter</h2>
+        <div class="controls" role="group" aria-label="Diameter filter">
+          <div class="control-row">
+            <label for="diameter" class="control-label">Min diameter (m)</label>
+            <div class="control-value"><span id="diameter-value">1.50</span> m</div>
+          </div>
+          <input
+            id="diameter"
+            class="range"
+            type="range"
+            min="0.6"
+            max="3"
+            step="0.05"
+            value="1.5"
+            aria-label="Minimum drain diameter in metres"
+          />
+          <div class="hint">
+            Dataset floor is 0.6m (features &lt;0.6m are not downloaded as the dataset would be too large). Use the slider to grey-out drains below your selected
+            threshold.
+          </div>
+        </div>
+
+        <h2>Basemap</h2>
+        <div class="controls" role="group" aria-label="Basemap selector">
+          <div class="control-row">
+            <label for="basemap-select" class="control-label">Imagery source</label>
+          </div>
+          <select id="basemap-select" class="select" aria-label="Select basemap imagery">
+            <option value="esri">Esri World Imagery</option>
+          </select>
+          <div id="basemap-warning" class="hint basemap-warning" hidden>
+            ACTmapi imagery is higher resolution when zoomed in, but can be less responsive (slower to load/pan/zoom).
+          </div>
+        </div>
+
+        <h2>Structures</h2>
+        <div class="controls" role="group" aria-label="Structure search">
+          <div id="structure-results" class="structure-results" aria-live="polite"></div>
+          <div id="structure-details" class="structure-details" aria-live="polite">
+            <div class="hint">Select a structure to see details.</div>
+          </div>
+          <div class="hint">
+            Structures come from <code>structures.json</code>. Click one to zoom/highlight its members.
+          </div>
+        </div>
+
+        <h2>Feature details</h2>
+        <div id="details" class="details">
+          <div class="hint">Click a feature to view its properties.</div>
+        </div>
+        <div class="footer">
+          Basemap: Imagery (Esri / ACTmapi) • Data: Filtered (to ≥0.6m drain diameter) data from
+          <a
+            href="https://actmapi-actgov.opendata.arcgis.com/datasets/25776cc87a664c9aadf9b297fe88d9ec_2/explore?filters=eyJQSVBFX0RJQU1FVEVSIjpbMjQ2Ni4yOSwyNzAwXX0%3D&location=-35.390661%2C149.083531%2C18"
+            target="_blank"
+            rel="noopener noreferrer"
+            >ACTmapi</a
+          >
+        </div>
+      </aside>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script
+      src="https://unpkg.com/esri-leaflet@3.0.14/dist/esri-leaflet.js"
+      crossorigin=""
+    ></script>
+    <script src="app.js?v=10"></script>
+  </body>
+</html>

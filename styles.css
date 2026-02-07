@@ -1,0 +1,459 @@
+:root {
+  --bg: #0b1220;
+  --panel: #0f1a2f;
+  --text: #e8eefc;
+  --muted: #a7b4d1;
+  --border: rgba(255, 255, 255, 0.12);
+  --accent: #6ee7ff;
+
+  /* Hint to the browser that we want dark-themed form controls. */
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  --sidebar-width: 360px;
+  --sidebar-resizer-width: 10px;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+}
+
+.title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.btn {
+  cursor: pointer;
+  border: 1px solid var(--border);
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.btn:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.layout {
+  height: calc(100% - 49px);
+  display: grid;
+  grid-template-columns: 1fr var(--sidebar-resizer-width) var(--sidebar-width);
+}
+
+.map {
+  height: 100%;
+}
+
+.sidebar {
+  border-left: 1px solid var(--border);
+  background: var(--panel);
+  padding: 14px;
+  overflow: auto;
+  container-type: inline-size;
+}
+
+.sidebar-resizer {
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+}
+
+.sidebar-resizer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.sidebar-resizer:hover::before {
+  opacity: 1;
+}
+
+body.resizing {
+  user-select: none;
+}
+
+body.sidebar-collapsed {
+  --sidebar-width: 0px;
+  --sidebar-resizer-width: 0px;
+}
+
+body.sidebar-collapsed .sidebar {
+  display: none;
+}
+
+body.sidebar-collapsed .sidebar-resizer {
+  display: none;
+}
+
+.sidebar h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+.details {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.18);
+  padding: 10px;
+}
+
+.controls {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  margin-bottom: 12px;
+}
+
+.control-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.control-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.control-value {
+  font-size: 13px;
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.range {
+  width: 100%;
+  accent-color: var(--accent);
+}
+
+.select {
+  width: 100%;
+  padding: 8px 34px 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  outline: none;
+
+  /* Let the opened dropdown use the OS-native selection/highlight colors. */
+  color-scheme: dark;
+
+  -webkit-appearance: none;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(232, 238, 252, 0.9) 50%),
+    linear-gradient(135deg, rgba(232, 238, 252, 0.9) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 13px) 50%;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+}
+
+.select:focus {
+  border-color: rgba(110, 231, 255, 0.55);
+  box-shadow: 0 0 0 2px rgba(110, 231, 255, 0.15);
+}
+
+.basemap-warning {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 214, 102, 0.35);
+  background: rgba(255, 214, 102, 0.08);
+  color: rgba(255, 239, 200, 0.95);
+}
+
+.structure-details {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.14);
+  padding: 10px;
+}
+
+.structure-details .structure-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.structure-details .structure-title .name {
+  font-weight: 700;
+}
+
+.structure-details .structure-title .meta {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.structure-actions {
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 6px;
+}
+
+.structure-actions .btn {
+  padding: 6px 10px;
+}
+
+.structure-desc {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.structure-desc p {
+  margin: 0 0 0.5em;
+}
+
+.structure-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.structure-section {
+  margin-top: 10px;
+}
+
+.structure-section h3 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 650;
+}
+
+.annotation-list {
+  display: grid;
+  gap: 8px;
+}
+
+.annotation-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.25);
+  color: var(--text);
+}
+
+.annotation-item:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.annotation-main {
+  all: unset;
+  cursor: pointer;
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.annotation-copy {
+  cursor: pointer;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.annotation-copy:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.annotation-copy[data-flash="1"],
+.structure-actions .btn[data-flash="1"] {
+  border-color: rgba(34, 211, 238, 0.9);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+.annotation-label {
+  font-weight: 650;
+}
+
+.annotation-coord {
+  font-size: 12px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.text {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(2, 6, 23, 0.35);
+  color: #e5e7eb;
+  outline: none;
+}
+
+.text:focus {
+  border-color: rgba(34, 211, 238, 0.7);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.18);
+}
+
+.structure-results {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.structure-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.35);
+  cursor: pointer;
+  user-select: none;
+}
+
+.structure-item:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.structure-name {
+  font-weight: 650;
+  color: #e5e7eb;
+}
+
+.structure-meta {
+  font-size: 12px;
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+.structure-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  flex: 0 0 12px;
+}
+
+.structure-label {
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 10px;
+  padding: 3px 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: minmax(110px, 40%) minmax(0, 1fr);
+  gap: 8px 10px;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.k {
+  color: var(--muted);
+}
+
+.v {
+  color: var(--text);
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@container (max-width: 320px) {
+  .kv {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .k {
+    font-weight: 700;
+  }
+}
+
+.footer {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Make Leaflet UI readable on dark background */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.35) !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.leaflet-control-attribution a {
+  color: rgba(110, 231, 255, 0.95) !important;
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: 60% 40%;
+  }
+
+  .sidebar-resizer {
+    display: none;
+  }
+
+  .sidebar {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  body.sidebar-collapsed .layout {
+    grid-template-rows: 1fr;
+  }
+}
